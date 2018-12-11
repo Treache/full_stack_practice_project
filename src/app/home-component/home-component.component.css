@@ -1,0 +1,14 @@
+table{
+    width: 80%;
+    margin: auto
+}
+#searchBox{
+    width: 80%;
+    margin: 10px auto;
+}
+/* td, th {
+    border: 1px solid gray;
+} */
+.gray {
+    color: gray;
+}

@@ -1,0 +1,28 @@
+<input type="search" class="form-control" id="searchBox" placeholder="Search...">
+<ng-container *ngIf="!availableMovies"><p class="gray">No movies yet.</p></ng-container>
+<table class="table table-striped" *ngIf="availableMovies">
+  <tr scope="row">
+    <th scope="col">Title</th>
+    <th scope="col">Running Time</th>
+    <th scope="col">Genre</th>
+    <th scope="col">Rating</th>
+    <th scope="col">Director</th>
+    <th scope="col">Status</th>
+    <th scope="col"></th>
+  </tr>
+  <tr scope="row" *ngFor="let movie of availableMovies">
+    <td>{{ movie.title }}</td>
+    <td>{{ movie.runningTime }} Minutes</td>
+    <td>{{ movie.genre }}</td>
+    <td>{{ movie.rating }} Stars</td>
+    <td>{{ movie.director }}</td>
+    <ng-container *ngIf="movie.status">
+      <td >Available</td>
+      <td><button type="button" class="btn btn-primary">Reserve</button></td>
+    </ng-container>
+    <ng-container *ngIf="!movie.status">
+      <td>Unavailable</td>
+      <td><button type="button" class="btn btn-secondary" disabled>Reserve</button></td>
+    </ng-container>
+  </tr>
+</table>
