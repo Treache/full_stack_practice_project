@@ -1,0 +1,14 @@
+.admin-top-menu {
+    /* background-color: red; */
+    width: 150px;
+    margin: 10px auto;
+}
+.right{
+    float: right;
+}
+.clear {
+    clear: both;
+}
+.mybtn {
+    margin: 10px;
+}

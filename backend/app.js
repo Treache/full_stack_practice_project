@@ -6,8 +6,19 @@ var path = require('path');
 const app = express();
 
 // *********** Include the Api routes ***********
-const studentRoutes = require("./routes/students");
+const userRoutes = require("./routes/users");
 const movieRoutes = require("./routes/movies");
+const customerRoutes = require("./routes/customers");
+
+// *********** Connect to Mongo  ***********
+var init = function() {
+  user = {
+    email: "admin@admin.ca",
+    username: "Admin",
+    password: "admin1234"
+  }
+  
+}
 
 // *********** Connect to Mongo  ***********
 console.log('Attempting to connect to mongoose');
@@ -34,8 +45,9 @@ app.use((req, res, next) => {
 });
 
 // ******** Setup the Api routes ***********
-app.use("/api/students", studentRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api/movies", movieRoutes);
+app.use("/api/customers", customerRoutes);
 
 
 app.use(express.static(path.join(__dirname, 'dist')));

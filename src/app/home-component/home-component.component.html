@@ -1,28 +1,40 @@
-<input type="search" class="form-control" id="searchBox" placeholder="Search...">
-<ng-container *ngIf="!availableMovies"><p class="gray">No movies yet.</p></ng-container>
-<table class="table table-striped" *ngIf="availableMovies">
-  <tr scope="row">
-    <th scope="col">Title</th>
-    <th scope="col">Running Time</th>
-    <th scope="col">Genre</th>
-    <th scope="col">Rating</th>
-    <th scope="col">Director</th>
-    <th scope="col">Status</th>
-    <th scope="col"></th>
-  </tr>
-  <tr scope="row" *ngFor="let movie of availableMovies">
-    <td>{{ movie.title }}</td>
-    <td>{{ movie.runningTime }} Minutes</td>
-    <td>{{ movie.genre }}</td>
-    <td>{{ movie.rating }} Stars</td>
-    <td>{{ movie.director }}</td>
-    <ng-container *ngIf="movie.status">
-      <td >Available</td>
-      <td><button type="button" class="btn btn-primary">Reserve</button></td>
-    </ng-container>
-    <ng-container *ngIf="!movie.status">
-      <td>Unavailable</td>
-      <td><button type="button" class="btn btn-secondary" disabled>Reserve</button></td>
-    </ng-container>
-  </tr>
-</table>
+<button type="button" class="btn btn-primary right mybtn" data-toggle="modal" data-target="#loginModal">Admin Login</button>
+
+<hr class="clear">
+
+<app-movie-list></app-movie-list>
+
+<!-- Admin Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Admin Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="adminLogin" (ngSubmit)="onLogin()">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email. (admin@megamind.io)">
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Password (Admin)">
+          </div>
+          <!-- <!-- <button type="submit" class="btn btn-primary">Submit</button> -- -->
+          <div class="modal-footer">
+              <button type="button" (click)="logog()" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">
+                  Close
+                </button>
+            <!-- <button type="reset" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+            <button type="submit" (click)="onLogin()" class="btn btn-primary" data-dismiss="modal">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

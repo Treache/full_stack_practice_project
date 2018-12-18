@@ -1,0 +1,23 @@
+<input type="search" class="form-control" (keyup)="filter$.next($event.target.value.trim().toLowerCase())" id="searchBox"
+  placeholder="Search...">
+<ng-container *ngIf="!customers">
+  <p class="gray">No customers yet.</p>
+</ng-container>
+<table class="table table-striped" *ngIf="customers">
+  <tr scope="row">
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Address</th>
+    <th scope="col">City</th>
+    <th scope="col">Phone Number</th>
+    <th scope="col">Status</th>
+  </tr>
+  <tr scope="row" *ngFor="let customer of customers; let i = index" [attr.data-index]="i">
+      <td>{{ customer.first_name }}</td>
+      <td>{{ customer.last_name }}</td>
+      <td>{{ customer.address }}</td>
+      <td>{{ customer.city }}</td>
+      <td>{{ customer.phone_number }}</td>
+      <td>{{ (customer.status) ? 'Active' : 'Expired' }}</td>
+  </tr>
+</table>

@@ -1,4 +1,6 @@
-
+a {
+  float: left;
+}
 .topnav {
     overflow: hidden;
     background-color: #333;
@@ -21,4 +23,7 @@
   .topnav a.active {
     background-color: #4CAF50;
     color: white;
+  }
+  .right{
+    float: right;
   }

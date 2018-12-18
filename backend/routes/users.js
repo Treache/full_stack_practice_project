@@ -1,12 +1,12 @@
 const express = require("express");
-const StudentModel = require('../models/student');
+const StudentModel = require('../models/user');
 
 const router = express.Router();
 
 
 router.get('', (req, res, next) => {
 
-  console.log('GET: Student lists');
+  console.log('GET: User lists');
 
   // Add Mongoose query to find all return list of students and return
 

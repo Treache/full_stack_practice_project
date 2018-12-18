@@ -1,0 +1,45 @@
+<h2>Edit</h2>
+<div *ngIf="editForm" style="width:80%; margin:10px auto">
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Title</label>
+      <input type="email" formControlName="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Title">
+      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Running Time</label>
+      <input type="number" class="form-control" formControlName="runningTime" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Running Time">
+      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Genre</label>
+      <input type="text" class="form-control" formControlName="genre" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Genre">
+      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Director</label>
+      <input type="text" formControlName="director" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Director">
+      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Rating</label>
+        <input type="number" min="0" max="5" formControlName="rating" class="form-control" id="exampleInputEmail1" aria-describedby="Rating"
+        placeholder="Director">
+      <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Status</label>
+    <select class="custom-select" formControlName="status">
+        <option selected>Open this select menu</option>
+        <option value="true">Available</option>
+        <option value="false">Unavailable</option>
+      </select>
+    </div>
+    <button type="button" class="btn btn-secondary">Cancel</button>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>

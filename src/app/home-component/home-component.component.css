@@ -1,14 +1,12 @@
-table{
-    width: 80%;
-    margin: auto
+.right{
+    float: right;
 }
-#searchBox{
-    width: 80%;
-    margin: 10px auto;
-}
-/* td, th {
-    border: 1px solid gray;
-} */
 .gray {
     color: gray;
+}
+.clear {
+    clear: both;
+}
+.mybtn {
+    margin: 10px;
 }

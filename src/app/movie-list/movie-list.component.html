@@ -1,0 +1,35 @@
+<input type="search" class="form-control" (keyup)="filter$.next($event.target.value.trim().toLowerCase())" id="searchBox"
+  placeholder="Search...">
+<ng-container *ngIf="!availableMovies">
+  <p class="gray">No movies yet.</p>
+</ng-container>
+<table class="table table-striped" *ngIf="availableMovies">
+  <tr scope="row">
+    <th scope="col">Title</th>
+    <th scope="col">Running Time</th>
+    <th scope="col">Genre</th>
+    <th scope="col">Rating</th>
+    <th scope="col">Director</th>
+    <th scope="col">Status</th>
+    <th scope="col"></th>
+    <th scope="col" *ngIf="isAdmin"></th>
+  </tr>
+  <tr scope="row" *ngFor="let movie of availableMovies; let i = index" [attr.data-index]="i">
+    <ng-container *ngIf="inUpdate != i">
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.runningTime }} Minutes</td>
+      <td>{{ movie.genre }}</td>
+      <td>{{ movie.rating }} Stars</td>
+      <td>{{ movie.director }}</td>
+      <td>{{ (movie.status) ? 'Available' : 'Unavailable' }}</td>
+      <ng-container *ngIf="!isAdmin">
+        <td><a routerLink="/reserve/{{ movie._id }}"><button type="button" class="btn" [class]="(movie.status) ? 'btn btn-primary' : 'btn btn-secondary'"
+            [disabled]="!movie.status">Reserve</button></a></td>
+      </ng-container>
+      <ng-container *ngIf="isAdmin">
+        <td><button class="btn btn-primary" (click)="update(i)">Update</button></td>
+        <td><button class="btn btn-danger" (click)="delete(i)">Delete</button></td>
+      </ng-container>
+    </ng-container>
+  </tr>
+</table>
